@@ -1,0 +1,178 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <style>
+      label {
+        display: none;
+      }
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #223243;
+      }
+
+      .container2 {
+        padding: 40px;
+        border: 8px solid #223243;
+        border-radius: 20px;
+        box-shadow: -5px -5px 15px rgba(255, 255, 255, 0.1),
+          5px 5px 15px rgba(0, 0, 0, 0.35),
+          inset -5px -5px 15px rgba(255, 255, 255, 0.1),
+          inset 5px 5px 15px rgba(0, 0, 0, 0.35);
+      }
+
+      .container2 .form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 25px;
+      }
+
+      .container2.signinForm .form.signin {
+        display: flex;
+      }
+
+      .container2 .form h2 {
+        color: #fff;
+        font-weight: 500;
+        letter-spacing: 0.1em;
+      }
+
+      .container2 .form .inputBox {
+        position: relative;
+        width: 300px;
+      }
+
+      .container2 .form .inputBox input {
+        padding: 12px 10px 12px 48px;
+        border: none;
+        width: 100%;
+        background: #223243;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        color: #fff;
+        font-weight: 300;
+        border-radius: 25px;
+        font-size: 1em;
+        box-shadow: -5px -5px 15px rgba(255, 255, 255, 0.1),
+          5px 5px 15px rgba(0, 0, 0, 0.35);
+        transition: 0.5s;
+        outline: none;
+      }
+
+      .container2 .form .inputBox span {
+        position: absolute;
+        left: 0;
+        padding: 12px 10px 12px 58px;
+        pointer-events: none;
+        font-size: 1em;
+        font-weight: 300;
+        transition: 0.5s;
+        letter-spacing: 0.05em;
+        color: rgba(255, 255, 255, 0.5);
+      }
+
+      .container2 .form .inputBox input:valid ~ span,
+      .container2 .form .inputBox input:focus ~ span {
+        color: #0ff;
+        border: 1px solid #0ff;
+        background: #223243;
+        transform: translateX(25px) translateY(-7px);
+        font-size: 0.6em;
+        padding: 0 8px;
+        border-radius: 10px;
+        letter-spacing: 0.1em;
+      }
+
+      .container2 .form .inputBox input:valid,
+      .container2 .form .inputBox input:focus {
+        border: 1px solid #0ff;
+      }
+
+      .container2 .form .inputBox i {
+        position: absolute;
+        top: 15px;
+        left: 25px;
+        width: 25px;
+        padding: 2px 0;
+        padding-right: 8px;
+        color: #0ff;
+        border-right: 1px solid #0ff;
+      }
+
+      .container2 .form .inputBox input[type="submit"] {
+        background: #0ff;
+        color: #223243;
+        padding: 10px 0;
+        font-weight: 500;
+        cursor: pointer;
+        box-shadow: -5px -5px 15px rgba(255, 255, 255, 0.1),
+          5px 5px 15px rgba(0, 0, 0, 0.35),
+          inset -5px -5px 15px rgba(255, 255, 255, 0.1),
+          inset 5px 5px 15px rgba(0, 0, 0, 0.35);
+      }
+
+      .container2 .form p {
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 0.75em;
+        font-weight: 300;
+      }
+
+      .container2 .form p a {
+        font-weight: 500;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+      <div class="container2">
+        <form class="form signup" method="POST">
+          {% csrf_token %}
+          <h2>Sign Up</h2>
+          <div class="inputBox">
+            <input type="text" required="required" name="name" />
+            <i class="fa-regular fa-user"></i>
+            <span>Username</span>
+          </div>
+          <div class="inputBox">
+            <input type="email" required="required" name="email" />
+            <i class="fa-regular fa-envelope"></i>
+            <span>Email address</span>
+          </div>
+          <div class="inputBox">
+            <input type="password" required="required" name="password" />
+            <i class="fa-solid fa-lock"></i>
+            <span>Password</span>
+          </div>
+          <div class="inputBox">
+            <input
+              type="password"
+              required="required"
+              name="confirm_password"
+            />
+            <i class="fa-solid fa-lock"></i>
+            <span>Confirm Password</span>
+          </div>
+          {{form}}
+          <div class="inputBox">
+            <input type="submit" value="Create Account" />
+          </div>
+          <p>
+            Already a member?
+            <a href="{% url 'login' %}" class="login">Log in</a>
+          </p>
+        </form>
+      </div>
+  </body>
+</html>

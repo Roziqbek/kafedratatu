@@ -1,0 +1,78 @@
+{% extends 'base.html' %} {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% block head %}
+    <title>{{new.title}}</title>
+    <link rel="stylesheet" href="{% static 'css/style_news.css' %}" />
+    {% endblock head %}
+  </head>
+  <body>
+    {% block content %}
+    <div class="container-xxl py-5 bg-primary hero-header mb-5">
+      <div class="container my-5 py-5 px-lg-5">
+        <div class="row g-5 py-5">
+          <div class="col-12 text-center">
+            <h1 class="text-white animated zoomIn">Our Team</h1>
+            <hr class="bg-white mx-auto mt-0" style="width: 90px" />
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb justify-content-center">
+                <li class="breadcrumb-item">
+                  <a class="text-white" href="{% url 'home' %}">Home</a>
+                </li>
+                <li class="breadcrumb-item">
+                  <a class="text-white" href="{% url 'news' %}">News</a>
+                </li>
+                <li
+                  class="breadcrumb-item text-white active"
+                  aria-current="page"
+                >
+                  {{new.title}}
+                </li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="heading">
+      <div class="leftcontent">
+        <h3>{{new.title}}</h3>
+        <p>{{new.new.text}}</p>
+        <div class="price">
+          <strong>{{new.new.datatime}}</strong>
+        </div>
+
+        <div class="addbag">
+          <a style='text-decoration: none;' href="{% url 'contact' %}"><div class="bagtext">Fikr berish</div></a>
+        </div>
+        <br />
+        <div class="m-5">
+          <img
+            style="display: inline-block"
+            src="{{new.img2.url}}"
+            width="200px"
+            height="110px"
+            class="shoesdown"
+          />
+          <img
+            src="{{new.img3.url}}"
+            width="200px"
+            height="110px"
+            class="shoesdown"
+          />
+        </div>
+      </div>
+
+      <div class="rightcontent">
+        <img src="{{new.img1.url}}" width="560px" height="280px" />
+      </div>
+    </div>
+    {% endblock content %}
+    <!--ADDING-Jquery-Link-->
+  </body>
+</html>
